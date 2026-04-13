@@ -1,13 +1,32 @@
-import React from 'react'
+import React, { useRef, useState } from 'react'
 import todo_icon from '../assets/todo_icon.png'
 import Todoitems from './Todoitems'
 
 const Todo = () => {
 
+const [todoList, setTodoList] = useState([]); 
+
+const inputRef = useRef();
+
+const add = () => {
+    const inputText = inputRef.current.value.trim();
 
 
-
+    if (inputText === "") {
+        return null;
+    }
     
+    const newTodo = {
+        id : Date.now(),
+        text : inputText,
+        isComplete : false,
+    }
+    setTodoList((previous) => [...previous, newTodo])
+    inputRef.current.value = "";
+
+}
+
+
   return (
     <div className='bg-emerald-50 place-self-center w-11/12 max-w-md flex flex-col p-7 min-h-[550px] rounded-xl'>
 
@@ -24,8 +43,8 @@ const Todo = () => {
 
 
     <div className='flex items-center my-7 bg-emerald-800 rounded-full'>
-        <input className='bg-transparent border-0 outline-none flex-1 h-14 pl-6 pr-2 placeholder:text-slate-50' type="text" placeholder='Add Your Task'/>
-        <button className='border-none rounded-full bg-white hover:bg-emerald-500 w-15 h-9 mr-3 text-emerald-900 fond-medium cursor-pointer'>Add+</button>
+        <input ref={inputRef} className='bg-transparent border-0 outline-none flex-1 h-14 pl-6 pr-2 text-emerald-50 placeholder:text-slate-50' type="text" placeholder='Add Your Task'/>
+        <button onClick={add} className='border-none rounded-full bg-white hover:bg-emerald-500 w-15 h-9 mr-3 text-emerald-900 fond-medium cursor-pointer'>Add+</button>
     </div>
 
  
@@ -34,11 +53,10 @@ const Todo = () => {
     <div>
     
     </div>
-       <Todoitems text="Learning Coding"/>
-       <Todoitems/>
-       <Todoitems/>
-       <Todoitems/>
-       <Todoitems/>
+
+    {todoList.map((item, index) =>{
+        return <Todoitems key={index} text={item.text} id = {item.id} isComplete = {item.isComplete} />})}
+
     </div>
   )
 }
