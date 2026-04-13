@@ -26,6 +26,11 @@ const add = () => {
 
 }
 
+const deleteTodo = (id) => {
+    setTodoList((previousTodos)=>{
+        return previousTodos.filter((todo) => todo.id !== id)})
+}
+
 
   return (
     <div className='bg-emerald-50 place-self-center w-11/12 max-w-md flex flex-col p-7 min-h-[550px] rounded-xl'>
@@ -55,7 +60,7 @@ const add = () => {
     </div>
 
     {todoList.map((item, index) =>{
-        return <Todoitems key={index} text={item.text} id = {item.id} isComplete = {item.isComplete} />})}
+        return <Todoitems key={index} text={item.text} id = {item.id} isComplete = {item.isComplete} deleteTodo = {deleteTodo} />})}
 
     </div>
   )
