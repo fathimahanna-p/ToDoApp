@@ -3,14 +3,14 @@ import not_tick from '../assets/not_tick.png'
 import tick_mark from '../assets/tick_mark.png'
 import delete_icon from '../assets/delete_icon.png'
 
-const Todoitems = ({text, id, isComplete, deleteTodo}) => {
+const Todoitems = ({text, id, isComplete, deleteTodo, toggle}) => {
   return (
     <div className='flex items-center my-2 gap-2'>
 
 
-        <div className='flex flex-1 item-center cursor-pointer'>
-            <img className='w-6' src={tick_mark} alt="" />
-            <p className='text-emerald-950 ml-4 text-[17px]'>{text}</p>
+        <div onClick={()=>{toggle(id)}} className='flex flex-1 item-center cursor-pointer'>
+            <img className='w-6' src={isComplete ? tick_mark : not_tick} alt="" />
+            <p className={`text-emerald-950 ml-4 text-[17px] decoration-slate-500 ${isComplete ? "line-through" : ""}`}>{text}</p>
         </div>
 
         <div>
