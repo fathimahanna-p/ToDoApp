@@ -10,11 +10,11 @@ const Todoitems = ({text}) => {
 
         <div className='flex flex-1 item-center cursor-pointer'>
             <img className='w-8' src={tick_mark} alt="" />
-            <p className='text-emerald-100 ml-4 text-[17px]'>{text}</p>
+            <p className='text-emerald-950 ml-4 text-[17px]'>{text}</p>
         </div>
 
         <div>
-            <img className='w-6 cursor-pointer' src={delete_icon} alt="" />
+            <img className='w-5 cursor-pointer' src={delete_icon} alt="" />
         </div>
 
 
