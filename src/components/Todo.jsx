@@ -1,9 +1,10 @@
 import React from 'react'
 import todo_icon from '../assets/todo_icon.png'
+import Todoitems from './Todoitems'
 
 const Todo = () => {
   return (
-    <div className='bg-emerald-700 place-self-center w-11/12 max-w-md flex flex-col p-7 min-h-[550px] rounded-xl'>
+    <div className='bg-emerald-600 place-self-center w-11/12 max-w-md flex flex-col p-7 min-h-[550px] rounded-xl'>
 
 {/*----------title----------------*/}
 
@@ -22,7 +23,17 @@ const Todo = () => {
         <button className='border-none rounded-full bg-emerald-700 hover:bg-emerald-950 w-15 h-9 mr-3 text-emerald-100 fond-medium cursor-pointer'>Add+</button>
     </div>
 
+ 
+{/*----------todo list----------------*/}
 
+    <div>
+    
+    </div>
+       <Todoitems text="Learning Coding"/>
+       <Todoitems/>
+       <Todoitems/>
+       <Todoitems/>
+       <Todoitems/>
     </div>
   )
 }
